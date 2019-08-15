@@ -3,7 +3,7 @@ This is about a betting on horse racing wagers where a user types in the game ty
 
 # Quick start
 
-### install dependencies
+### `install dependencies`
 npm install / yarn install
 
 ### `npm start`
@@ -13,6 +13,6 @@ Serve on localhost:3000 npm start
 Build for production npm run build
 
 
-### 'Cors'
+### `Cors`
 Cross-origin resource sharing (CORS) restricts the data to be fetched, to solve this problem i disabled the same origin policy in chrome by opening the window search box and then type 'run', in the dialog box which pops up i pasted this command                     'chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
