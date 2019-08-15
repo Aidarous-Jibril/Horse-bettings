@@ -83,7 +83,7 @@ function App() {
       });
   };
 
-  //hadle user btn selection
+  //handle user btn selection
   const handleClck = selected => {
     setSelected(selected);
   };
