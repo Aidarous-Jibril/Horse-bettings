@@ -42,29 +42,41 @@ function App() {
       const fetchUrl = `https://www.atg.se/services/racinginfo/v1/api/products/${value}`;
       return fetch(fetchUrl)
         .then(res => res.json())
-        .then(data => {
+        .then(data => {      console.log(data);
           return sortAndFetchData(data);
+         
+        })
+        .catch(error => {
+          console.log("Error", error);
         });
     }
   };
 
-  //sorting fetched data by newest date
+  //sorting fetched data and pick whatever is at the index 0 because that is the closest or newest 
   const sortAndFetchData = data => {
     let upcoming;
     let result;
-    if (data.upcoming.length > 0) {
+    // games may not have any upcoming
+    if (data.upcoming && data.upcoming.length > 0) {
       upcoming = data.upcoming.sort(
         (a, b) => new Date(b.startTime) - new Date(a.startTime)
       )[0];
+      fetchLatestGameAndResult(upcoming.id, "upcoming");
+      console.log(upcoming)
+    } else {
+      setIsLoading(false);
+      setUpcomingRace({ races: null });
     }
-    if (data.results.length > 0) {
+    // games may not have results
+    if (data.results && data.results.length > 0) {
       result = data.results.sort(
         (a, b) => new Date(b.startTime) - new Date(a.startTime)
       )[0];
+      fetchLatestGameAndResult(result.id, "result");
+    } else {
+      setIsLoading(false);
+      setRacesResult({ races: null });
     }
-    //passing data (upcoming.id & result.id) into the fetchLatestGameAndResult
-    fetchLatestGameAndResult(upcoming.id, "upcoming");
-    fetchLatestGameAndResult(result.id, "result");
   };
 
   //fetch API endpoint with the value picked up from game schedule table
@@ -75,22 +87,26 @@ function App() {
       .then(data => {
         if (type === "upcoming") {
           setIsLoading(false);
-          setUpcomingRace(data);
+          setUpcomingRace(data) 
+          //console.log(data); //this data is attached to races data
         } else if (type === "result") {
           setIsLoading(false);
           setRacesResult(data);
         }
+      })
+      .catch(error => {
+        console.log(error);
       });
   };
 
-  //handle user btn selection
+  //handleClick accepts an argument to store setSelected()
   const handleClck = selected => {
     setSelected(selected);
   };
 
   let render;
-  if (upcomingRace && racesResult) {
-    //storing render var the selected and passind data to child components
+  if (upcomingRace || racesResult) {
+    //storing the selected value render var and passind data to child components
     render =
       selected === "upcoming" ? (
         <UpcomingGames races={upcomingRace.races} gameType={gameType} />
@@ -103,21 +119,33 @@ function App() {
       <InputContainer onChange={handleChange} />
       <nav>
         <button style={btnStyle} onClick={() => handleClck("upcoming")}>Upcoming</button>
-        <button style={btnStyle} onClick={() => handleClck("result")}>Result</button>
+        <button style={btnStyle} onClick={() => handleClck("result")}>Result</button>         
       </nav>
-      {isLoading === true && <p>Loading...</p>}
-      {render}
+      {isLoading === true && <p className="loading">Loading...</p> }
+      {render ? (
+        <div className={isLoading ? "low-opacity" : ""}>{render}</div>
+      ) : (
+        <h4 className="text-center pt-3">
+          Please enter a valid game type 
+        </h4>
+      )}
     </main>
   );
 }
 
-
 //buttons style
 const btnStyle = {
-  width: '20%', backgroundColor: '#555555', color: 'white',  padding: '12px 22px', 
-  display: 'inline', marginLeft: '20%', marginTop: '5px', borderRadius: '5%', border: '2px solid #ffffff'
-}
+  width: "20%",
+  backgroundColor: "#555555",
+  color: "white",
+  padding: "12px 22px",
+  display: "inline",
+  marginLeft: "20%",
+  marginTop: "5px",
+  borderRadius: "5%",
+  border: "2px solid #ffffff"
+};
 
-export default App; 
+export default App;
 
 
