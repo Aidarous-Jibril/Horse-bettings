@@ -23,13 +23,13 @@ function StartRow({ start, horse }) {
       {expanded && (
         <tr >
           <td>            
-            <span style={getStyle}>Trainer firstname:</span> <br></br> {trainer.firstName} 
+            <span style={getStyle}>Trainer firstname:</span><br></br> {trainer.firstName} 
           </td>
           <td>            
-            <span style={getStyle}>Trainer lastname:</span> <br></br> {trainer.lastName}
+            <span style={getStyle}>Trainer lastname:</span><br></br> {trainer.lastName}
           </td>
           <td>            
-            <span style={getStyle}>Horse father name:</span> <br></br> {horse.pedigree.father.name}    
+            <span style={getStyle}>Horse father name:</span><br></br> {horse.pedigree.father.name}    
           </td>
         </tr>
       )}
