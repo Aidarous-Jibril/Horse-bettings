@@ -18,4 +18,4 @@ Build for production npm run build
 Cross-origin resource sharing (CORS) restricts the data to be fetched, to solve this problem i disabled the same origin policy in chrome by opening the window search box and then type 'run', in the dialog box which pops up i pasted this command                     'chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
 ### `Test ?`
-for testing purposes use this link https://jr0mj.csb.app/ , make sure you disabled cors by following the above instruction
+for testing purposes use this link https://vhm8t.csb.app/ ,  make sure you disabled cors by following the above instruction
