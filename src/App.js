@@ -52,7 +52,7 @@ function App() {
     }
   };
 
-  //sorting fetched data and pick whatever is at the index 0 because that is the closest or newest 
+  //sorting fetched data and pick whatever is at the index 0 because that is the closest, earliest or newest bcz upc has more than 1 game init
   const sortAndFetchData = data => {
     let upcoming;
     let result;
