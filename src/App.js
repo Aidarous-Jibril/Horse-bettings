@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import UpcomingGames from "./UpcomingGames";
 import Result from "./Results";
+import Navbar from "./components/Navbar";
 
 //Input functional component
 function InputContainer({ onChange }) {
@@ -44,7 +45,6 @@ function App() {
         .then(res => res.json())
         .then(data => {      console.log(data);
           return sortAndFetchData(data);
-         
         })
         .catch(error => {
           console.log("Error", error);
@@ -56,18 +56,18 @@ function App() {
   const sortAndFetchData = data => {
     let upcoming;
     let result;
-    // games may not have any upcoming
+    //check if there is any upcoming games
     if (data.upcoming && data.upcoming.length > 0) {
       upcoming = data.upcoming.sort(
         (a, b) => new Date(b.startTime) - new Date(a.startTime)
       )[0];
       fetchLatestGameAndResult(upcoming.id, "upcoming");
-      console.log(upcoming)
+      // console.log(upcoming)
     } else {
       setIsLoading(false);
       setUpcomingRace({ races: null });
     }
-    // games may not have results
+    // games may not have results, so check game results
     if (data.results && data.results.length > 0) {
       result = data.results.sort(
         (a, b) => new Date(b.startTime) - new Date(a.startTime)
@@ -79,12 +79,13 @@ function App() {
     }
   };
 
-  //fetch API endpoint with the value picked up from game schedule table
+  //fetch API endpoint with the id of chosen game from schedule table
   const fetchLatestGameAndResult = (id, type) => {
     const url = `https://www.atg.se/services/racinginfo/v1/api/games/${id}`;
     fetch(url)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         if (type === "upcoming") {
           setIsLoading(false);
           setUpcomingRace(data) 
@@ -106,7 +107,7 @@ function App() {
 
   let render;
   if (upcomingRace || racesResult) {
-    //storing the selected value render var and passind data to child components
+    //storing the selected value render variable and passing data to child components
     render =
       selected === "upcoming" ? (
         <UpcomingGames races={upcomingRace.races} gameType={gameType} />
@@ -116,12 +117,13 @@ function App() {
   }
   return (
     <main>
+      <Navbar />
       <InputContainer onChange={handleChange} />
       <nav>
         <button style={btnStyle} onClick={() => handleClck("upcoming")}>Upcoming</button>
         <button style={btnStyle} onClick={() => handleClck("result")}>Result</button>         
       </nav>
-      {isLoading === true && <p className="loading">Loading...</p> }
+      {isLoading && <p className="loading">Loading...</p> }
       {render ? (
         <div className={isLoading ? "low-opacity" : ""}>{render}</div>
       ) : (

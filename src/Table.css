@@ -18,6 +18,7 @@
   
   .Table tr:hover {
     background-color: #ddd;
+    cursor: pointer;
   }
   
   .Table th {
