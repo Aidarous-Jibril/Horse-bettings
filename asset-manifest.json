@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jsr200-react/static/css/main.d86c5bc6.chunk.css",
-    "main.js": "/jsr200-react/static/js/main.69c8341d.chunk.js",
-    "main.js.map": "/jsr200-react/static/js/main.69c8341d.chunk.js.map",
-    "runtime~main.js": "/jsr200-react/static/js/runtime~main.a468360a.js",
-    "runtime~main.js.map": "/jsr200-react/static/js/runtime~main.a468360a.js.map",
-    "static/js/2.f7506be0.chunk.js": "/jsr200-react/static/js/2.f7506be0.chunk.js",
-    "static/js/2.f7506be0.chunk.js.map": "/jsr200-react/static/js/2.f7506be0.chunk.js.map",
-    "index.html": "/jsr200-react/index.html",
-    "precache-manifest.f6b0d4d473af2fbeb492d05756220f96.js": "/jsr200-react/precache-manifest.f6b0d4d473af2fbeb492d05756220f96.js",
-    "service-worker.js": "/jsr200-react/service-worker.js",
-    "static/css/main.d86c5bc6.chunk.css.map": "/jsr200-react/static/css/main.d86c5bc6.chunk.css.map"
+    "main.css": "/React-Horse-Gambling/static/css/main.d86c5bc6.chunk.css",
+    "main.js": "/React-Horse-Gambling/static/js/main.69c8341d.chunk.js",
+    "main.js.map": "/React-Horse-Gambling/static/js/main.69c8341d.chunk.js.map",
+    "runtime~main.js": "/React-Horse-Gambling/static/js/runtime~main.d525e82c.js",
+    "runtime~main.js.map": "/React-Horse-Gambling/static/js/runtime~main.d525e82c.js.map",
+    "static/js/2.f7506be0.chunk.js": "/React-Horse-Gambling/static/js/2.f7506be0.chunk.js",
+    "static/js/2.f7506be0.chunk.js.map": "/React-Horse-Gambling/static/js/2.f7506be0.chunk.js.map",
+    "index.html": "/React-Horse-Gambling/index.html",
+    "precache-manifest.b372da71ab196d87c3fc68ec8411cbbf.js": "/React-Horse-Gambling/precache-manifest.b372da71ab196d87c3fc68ec8411cbbf.js",
+    "service-worker.js": "/React-Horse-Gambling/service-worker.js",
+    "static/css/main.d86c5bc6.chunk.css.map": "/React-Horse-Gambling/static/css/main.d86c5bc6.chunk.css.map"
   }
 }
