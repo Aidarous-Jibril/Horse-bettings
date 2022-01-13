@@ -117,11 +117,7 @@ function App() {
   }
   return (
     <main>
-<<<<<<< HEAD
-      <Navbar />
-=======
      <Navbar />
->>>>>>> c671a79f753f06f67c22184c9528a97e90924a15
       <InputContainer onChange={handleChange} />
       <nav>
         <button style={btnStyle} onClick={() => handleClck("upcoming")}>Upcoming</button>
