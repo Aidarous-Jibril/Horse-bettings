@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import UpcomingGames from "./UpcomingGames";
 import Result from "./Results";
+import Navbar from "./components/Navbar";
 
 //Input functional component
 function InputContainer({ onChange }) {
@@ -116,6 +117,7 @@ function App() {
   }
   return (
     <main>
+     <Navbar />
       <InputContainer onChange={handleChange} />
       <nav>
         <button style={btnStyle} onClick={() => handleClck("upcoming")}>Upcoming</button>
